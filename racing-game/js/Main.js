@@ -20,7 +20,6 @@ function imageLoadingDoneSoStartGame() {
    setInterval(updateAll, 1000 / framesPerSecond);
 
    setupInput();
-   loadImages();
    carReset();
 }
 
@@ -31,8 +30,7 @@ function updateAll() {
 
 function moveAll() {
    carMove();
-
-   carTrackHnadling();
+   carTrackHandling();
 }
 
 function drawAll() {
