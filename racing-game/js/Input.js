@@ -33,7 +33,9 @@ function updateMousePos(evt) {
 }
 
 function keyPressed(evt) {
+   evt.preventDefault();
    // console.log('Key pressed:' + evt.keyCode);
+
    if (evt.keyCode === KEY_LEFT_ARROW) {
       keyHeld_TurnLeft = true;
    }
@@ -41,8 +43,6 @@ function keyPressed(evt) {
       keyHeld_TurnRight = true;
    }
    if (evt.keyCode === KEY_UP_ARROW) {
-      console.log('gas');
-
       keyHeld_Gas = true;
    }
    if (evt.keyCode === KEY_DOWN_ARROW) {
