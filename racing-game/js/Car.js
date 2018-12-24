@@ -10,6 +10,7 @@ function carClass() {
    this.ang = 0;
    this.speed = 0;
    this.myCarPic; // which picture to use
+   this.name = 'Untitled Car';
 
    this.keyHeld_Gas = false;
    this.keyheld_Reverse = false;
@@ -28,8 +29,10 @@ function carClass() {
       this.controlKeyLeft = leftKey;
    };
 
-   this.reset = function(whichImage) {
+   this.reset = function(whichImage, carName) {
+      this.name = carName;
       this.myCarPic = whichImage;
+      this.speed = 0;
 
       for (let eachRow = 0; eachRow < TRACK_ROWS; eachRow++) {
          for (let eachCol = 0; eachCol < TRACK_COLS; eachCol++) {
@@ -45,6 +48,7 @@ function carClass() {
             } // end of player start if
          } // end of col for
       } // end of row for
+      console.log('No Player Start Found!');
    }; // end of carReset func
 
    this.move = function() {
