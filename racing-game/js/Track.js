@@ -21,7 +21,7 @@ var levelOne = [
    0, 3, 0, 0, 0, 0, 1, 4, 4, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1,
    1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 4
 ];
-var levelList = [levelOne, levelTwo];
+var levelList = [levelOne];
 var trackGrid = [];
 const TRACK_ROAD = 0;
 const TRACK_WALL = 1;
