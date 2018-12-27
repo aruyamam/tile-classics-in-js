@@ -1,5 +1,4 @@
 var warriorPic = document.createElement('img');
-var otherCarPic = document.createElement('img');
 var worldPics = [];
 
 var picsToLoad = 0; // set automatically based on imageList in loadImages()
@@ -24,13 +23,13 @@ function loadImageForTrackCode(worldCode, fileName) {
 
 function loadImages() {
    var imageList = [
-      { varName: warriorPic, theFile: 'player1car.png' },
+      { varName: warriorPic, theFile: 'warrior.png' },
 
-      { worldType: WORLD_ROAD, theFile: 'world_road.png' },
-      { worldType: WORLD_WALL, theFile: 'world_wall.png' },
-      { worldType: WORLD_GOAL, theFile: 'world_goal.png' },
-      { worldType: WORLD_TREE, theFile: 'world_tree.png' },
-      { worldType: WORLD_FLAG, theFile: 'world_flag.png' }
+      { worldType: TILE_GROUND, theFile: 'world_road.png' },
+      { worldType: TILE_WALL, theFile: 'world_wall.png' },
+      { worldType: TILE_GOAL, theFile: 'world_goal.png' },
+      { worldType: TILE_KEY, theFile: 'world_tree.png' },
+      { worldType: TILE_DOOR, theFile: 'world_flag.png' }
    ];
 
    picsToLoad = imageList.length;

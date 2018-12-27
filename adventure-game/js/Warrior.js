@@ -31,8 +31,8 @@ function warriorClass() {
          for (let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
             var arrayIndex = rowColToArrayIndex(eachCol, eachRow);
 
-            if (worldGrid[arrayIndex] == WORLD_PLAYERSTART) {
-               worldGrid[arrayIndex] = WORLD_ROAD;
+            if (worldGrid[arrayIndex] == TILE_PLAYERSTART) {
+               worldGrid[arrayIndex] = TILE_GROUND;
                this.ang = -Math.PI / 2;
                this.x = eachCol * WORLD_W + WORLD_W / 2;
                this.y = eachRow * WORLD_H + WORLD_H / 2;
@@ -63,10 +63,10 @@ function warriorClass() {
 
       var walkIntoTileIndex = getTileTypeAtPixelCoord(nextX, nextY);
 
-      if (walkIntoTileIndex == WORLD_GOAL) {
+      if (walkIntoTileIndex == TILE_GOAL) {
          console.log(this.name + ' WINS!');
          loadLevel(levelOne);
-      } else if (walkIntoTileIndex == WORLD_ROAD) {
+      } else if (walkIntoTileIndex == TILE_GROUND) {
          this.x = nextX;
          this.y = nextY;
       }

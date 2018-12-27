@@ -22,12 +22,12 @@ var levelOne = [
 ];
 
 var worldGrid = [];
-const WORLD_ROAD = 0;
-const WORLD_WALL = 1;
-const WORLD_PLAYERSTART = 2;
-const WORLD_GOAL = 3;
-const WORLD_TREE = 4;
-const WORLD_FLAG = 5;
+const TILE_GROUND = 0;
+const TILE_WALL = 1;
+const TILE_PLAYERSTART = 2;
+const TILE_GOAL = 3;
+const TILE_KEY = 4;
+const TILE_DOOR = 5;
 
 function returnTileTypeAtColRow(col, row) {
    if (col >= 0 && col < WORLD_COLS && row >= 0 && row < WORLD_ROWS) {
@@ -63,6 +63,14 @@ function rowColToArrayIndex(col, row) {
    return col + WORLD_COLS * row;
 }
 
+function tileTypeHasTransparency(checkTileType) {
+   return (
+      checkTileType == TILE_GOAL ||
+      checkTileType == TILE_KEY ||
+      checkTileType == TILE_DOOR
+   );
+}
+
 function drawWorld() {
    var arrayIndex = 0;
    var drawTileX = 0;
@@ -73,8 +81,14 @@ function drawWorld() {
          var tileKindHere = worldGrid[arrayIndex];
          var useImg = worldPics[tileKindHere];
 
+         if (tileTypeHasTransparency(tileKindHere)) {
+            canvasContext.drawImage(
+               worldPics[TILE_GROUND],
+               drawTileX,
+               drawTileY
+            );
+         }
          canvasContext.drawImage(useImg, drawTileX, drawTileY);
-
          drawTileX += WORLD_W;
          arrayIndex++;
       }
