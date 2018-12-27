@@ -1,27 +1,24 @@
-const WORLD_COLS = 20;
-const WORLD_ROWS = 15;
+const WORLD_COLS = 16;
+const WORLD_ROWS = 12;
 // const WORLD_W = winWidth / WORLD_COLS;
 // const WORLD_H = winHeight / WORLD_ROWS;
-const WORLD_W = 40;
-const WORLD_H = 40;
+const WORLD_W = 50;
+const WORLD_H = 50;
 const WORLD_GAP = 2;
 // prettier-ignore
 var levelOne = [
-   4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4,
-   4, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-   1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-   1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1,
-   1, 0, 0, 0, 1, 1, 1, 4, 4, 4, 4, 1, 1, 1, 1, 1, 1, 0, 0, 1,
-   1, 0, 0, 1, 1, 0, 0, 1, 4, 4, 1, 1, 0, 0, 0, 0, 1, 0, 0, 1,
-   1, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0, 1, 0, 0, 1,
-   1, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 5, 0, 0, 1, 0, 0, 1,
-   1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1,
-   1, 0, 0, 1, 0, 0, 5, 0, 0, 0, 5, 0, 0, 1, 0, 0, 1, 0, 0, 1,
-   1, 2, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 5, 0, 0, 1,
-   1, 1, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1,
-   0, 3, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1,
-   0, 3, 0, 0, 0, 0, 1, 4, 4, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1,
-   1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1, 1, 4
+   4, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+   4, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+   1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+   1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1,
+   1, 0, 0, 0, 1, 1, 1, 4, 4, 4, 4, 1, 1, 1, 0, 1,
+   1, 0, 0, 1, 1, 0, 0, 1, 4, 4, 1, 1, 0, 0, 0, 0,
+   1, 0, 0, 1, 0, 0, 0, 0, 1, 4, 1, 0, 0, 0, 0, 0,
+   1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 5, 0, 0,
+   1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0,
+   1, 0, 0, 1, 0, 0, 5, 0, 0, 0, 5, 0, 0, 1, 0, 0,
+   1, 2, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0,
+   1, 1, 1, 1, 1, 1, 1, 4, 4, 4, 4, 4, 4, 4, 1, 1
 ];
 
 var worldGrid = [];
@@ -45,7 +42,7 @@ function returnTileTypeAtColRow(col, row) {
 function getTileTypeAtPixelCoord(atX, atY) {
    var warriorWorldCol = Math.floor(atX / WORLD_W);
    var warriorWorldRow = Math.floor(atY / WORLD_H);
-   var trackIndexUnderCar = rowColToArrayIndex(
+   var worldIndexUnderCar = rowColToArrayIndex(
       warriorWorldCol,
       warriorWorldRow
    );
@@ -74,7 +71,7 @@ function drawWorld() {
    for (let eachRow = 0; eachRow < WORLD_ROWS; eachRow++) {
       for (let eachCol = 0; eachCol < WORLD_COLS; eachCol++) {
          var tileKindHere = worldGrid[arrayIndex];
-         var useImg = trackPics[tileKindHere];
+         var useImg = worldPics[tileKindHere];
 
          canvasContext.drawImage(useImg, drawTileX, drawTileY);
 
